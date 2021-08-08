@@ -1,5 +1,7 @@
 package pl.unlimited.windows.serwer.model;
 
+import pl.unlimited.windows.serwer.model.dto.WindowDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -107,5 +109,18 @@ public class Window {
 
     public void setWindowSize(WindowSize windowSize) {
         this.windowSize = windowSize;
+    }
+
+    public WindowDto toDto (){
+        return new WindowDto.WindowDtoBuilder()
+                .countWindowSashes(countWindowSashes)
+                .windowProfileType(windowProfileType)
+                .glassType(glassType)
+                .windowHardware(windowHardware)
+                .windowSize(windowSize.toDto())
+                .windowType(windowType)
+                .windowOpenType(windowOpenType)
+                .protectionGlass(protectionGlass)
+                .build();
     }
 }

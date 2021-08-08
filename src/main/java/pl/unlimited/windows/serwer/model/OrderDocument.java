@@ -1,5 +1,7 @@
 package pl.unlimited.windows.serwer.model;
 
+import pl.unlimited.windows.serwer.model.dto.OrderDocumentDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,5 +35,11 @@ public class OrderDocument {
 
     public void setWindow(Window window) {
         this.window = window;
+    }
+
+    public OrderDocumentDto toDto(){
+        return new OrderDocumentDto.OrderDocumentDtoBuilder()
+                .window(window.toDto())
+                .build();
     }
 }

@@ -1,5 +1,7 @@
 package pl.unlimited.windows.serwer.model;
 
+import pl.unlimited.windows.serwer.model.dto.WindowSizeDto;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -44,5 +46,12 @@ public class WindowSize {
 
     public void setHeight(Double height) {
         this.height = height;
+    }
+
+    public WindowSizeDto toDto() {
+        return new WindowSizeDto.WindowSizeBuilder()
+                .height(height)
+                .width(width)
+                .build();
     }
 }
