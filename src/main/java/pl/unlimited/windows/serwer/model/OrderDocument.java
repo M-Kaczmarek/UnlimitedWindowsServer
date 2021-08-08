@@ -39,6 +39,7 @@ public class OrderDocument {
 
     public OrderDocumentDto toDto(){
         return new OrderDocumentDto.OrderDocumentDtoBuilder()
+                .id(id)
                 .window(window.toDto())
                 .build();
     }

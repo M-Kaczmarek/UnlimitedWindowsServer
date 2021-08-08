@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 public class WindowDto {
+    private final Long id;
     private final WindowType windowType;
     private final GlassType glassType;
     private final Boolean protectionGlass;
@@ -17,6 +18,7 @@ public class WindowDto {
     private final WindowSizeDto windowSize;
 
     public WindowDto(final WindowDtoBuilder builder) {
+        this.id = builder.id;
         this.windowType = builder.windowType;
         this.glassType = builder.glassType;
         this.protectionGlass = builder.protectionGlass;
@@ -27,7 +29,44 @@ public class WindowDto {
         this.windowSize = builder.windowSize;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public WindowType getWindowType() {
+        return windowType;
+    }
+
+    public GlassType getGlassType() {
+        return glassType;
+    }
+
+    public Boolean getProtectionGlass() {
+        return protectionGlass;
+    }
+
+    public WindowProfileType getWindowProfileType() {
+        return windowProfileType;
+    }
+
+    public WindowHardware getWindowHardware() {
+        return windowHardware;
+    }
+
+    public Long getCountWindowSashes() {
+        return countWindowSashes;
+    }
+
+    public WindowOpenType getWindowOpenType() {
+        return windowOpenType;
+    }
+
+    public WindowSizeDto getWindowSize() {
+        return windowSize;
+    }
+
     public static class WindowDtoBuilder {
+        private Long id;
         private WindowType windowType;
         private GlassType glassType;
         private Boolean protectionGlass;
@@ -36,6 +75,11 @@ public class WindowDto {
         private Long countWindowSashes;
         private WindowOpenType windowOpenType;
         private WindowSizeDto windowSize;
+
+        public WindowDtoBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
         public WindowDtoBuilder windowType(WindowType windowType) {
             this.windowType = windowType;
