@@ -2,6 +2,8 @@ package pl.unlimited.windows.serwer.model.dto;
 
 import pl.unlimited.windows.serwer.model.Window;
 
+import java.util.Optional;
+
 public class OrderDocumentDto {
     private final Long id;
     private final WindowDto window;
@@ -12,7 +14,7 @@ public class OrderDocumentDto {
     }
 
     public WindowDto getWindow() {
-        return window;
+        return Optional.ofNullable(window).orElse(null);
     }
 
     public Long getId() {

@@ -5,6 +5,7 @@ import pl.unlimited.windows.serwer.model.*;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import java.util.Optional;
 
 public class WindowDto {
     private final Long id;
@@ -34,35 +35,35 @@ public class WindowDto {
     }
 
     public WindowType getWindowType() {
-        return windowType;
+        return Optional.ofNullable(windowType).orElse(null);
     }
 
     public GlassType getGlassType() {
-        return glassType;
+        return Optional.ofNullable(glassType).orElse(null);
     }
 
     public Boolean getProtectionGlass() {
-        return protectionGlass;
+        return Optional.ofNullable(protectionGlass).orElse(null);
     }
 
     public WindowProfileType getWindowProfileType() {
-        return windowProfileType;
+        return Optional.ofNullable(windowProfileType).orElse(null);
     }
 
     public WindowHardware getWindowHardware() {
-        return windowHardware;
+        return Optional.ofNullable(windowHardware).orElse(null);
     }
 
     public Long getCountWindowSashes() {
-        return countWindowSashes;
+        return Optional.ofNullable(countWindowSashes).orElse(null);
     }
 
     public WindowOpenType getWindowOpenType() {
-        return windowOpenType;
+        return Optional.ofNullable(windowOpenType).orElse(null);
     }
 
     public WindowSizeDto getWindowSize() {
-        return windowSize;
+        return Optional.ofNullable(windowSize).orElse(null);
     }
 
     public static class WindowDtoBuilder {

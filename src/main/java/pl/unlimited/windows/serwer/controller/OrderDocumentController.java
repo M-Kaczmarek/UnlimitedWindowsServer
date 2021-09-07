@@ -9,6 +9,8 @@ import pl.unlimited.windows.serwer.api.OrderDocumentApi;
 import pl.unlimited.windows.serwer.model.dto.OrderDocumentDto;
 import pl.unlimited.windows.serwer.service.OrderDocumentFacade;
 
+import java.util.List;
+
 @RestController
 public class OrderDocumentController implements OrderDocumentApi {
 
@@ -19,7 +21,14 @@ public class OrderDocumentController implements OrderDocumentApi {
     }
 
     @Override
+    public ResponseEntity<List<OrderDocumentDto>> getOrderDocuments() {
+        return ResponseEntity.ok(orderDocumentFacade.getOrderDocument());
+    }
+
+    @Override
     public ResponseEntity<OrderDocumentDto> createOrderDocument(@RequestBody OrderDocumentDto orderDocumentDto){
-        return ResponseEntity.ok(orderDocumentDto);
+        OrderDocumentDto createdOrderDocument = orderDocumentFacade.createOrderDocument(orderDocumentDto);
+
+        return ResponseEntity.ok(createdOrderDocument); //TODO status code could be created
     }
 }

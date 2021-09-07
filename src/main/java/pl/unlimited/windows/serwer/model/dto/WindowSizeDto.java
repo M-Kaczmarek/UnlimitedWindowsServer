@@ -1,5 +1,10 @@
 package pl.unlimited.windows.serwer.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import org.springframework.boot.jackson.JsonComponent;
+@JsonDeserialize(builder = WindowSizeDto.WindowSizeBuilder.class)
 public class WindowSizeDto {
     private final Long id;
     private final Double width;
@@ -22,7 +27,7 @@ public class WindowSizeDto {
     public Double getHeight() {
         return height;
     }
-
+    @JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
     public static class WindowSizeBuilder {
         private Long id;
         private Double width;

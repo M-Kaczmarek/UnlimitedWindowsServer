@@ -2,6 +2,7 @@ package pl.unlimited.windows.serwer.service;
 
 
 import org.springframework.stereotype.Component;
+import pl.unlimited.windows.serwer.model.OrderDocument;
 import pl.unlimited.windows.serwer.model.dto.OrderDocumentDto;
 import pl.unlimited.windows.serwer.repository.OrderDocumentRepository;
 
@@ -14,8 +15,8 @@ class CreateOrderDocumentService {
     }
 
     public OrderDocumentDto createOrderDocument(final OrderDocumentDto orderDocumentDto){
-        OrderDocumentDomain doc =  OrderDocumentDomain.fromDto(orderDocumentDto);
-
-        return null;
+        OrderDocumentDomain orderDocumentDomain =  OrderDocumentDomain.fromDto(orderDocumentDto);
+        OrderDocument savedOrderDocument = orderDocumentRepository.save(OrderDocumentDomain.toEntityModel(orderDocumentDomain));
+        return savedOrderDocument.toDto();
     }
 }
