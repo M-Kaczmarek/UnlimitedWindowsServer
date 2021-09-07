@@ -2,7 +2,10 @@ package pl.unlimited.windows.serwer.error.exception;
 
 public enum ErrorCode {
 
-    ORDER_DOCUMENT_NOT_FOUND(1000);
+    ORDER_DOCUMENT_NOT_FOUND(1000),
+    ORDER_DOCUMENT_INVALID_REQUEST(1001),
+
+    WINDOW_SIZE_NOT_FOUND(2000);
 
 
 
