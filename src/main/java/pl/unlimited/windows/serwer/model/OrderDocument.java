@@ -8,7 +8,8 @@ import javax.persistence.*;
 public class OrderDocument {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ORDER_20")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
+    @SequenceGenerator(name = "order_seq", sequenceName = "SEQ_ORDER_20", allocationSize = 1)
     private Long id;
     @OneToOne
     private Window window;

@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Entity
 public class Window {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_WINDOW_10")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "window_seq")
+    @SequenceGenerator(name = "window_seq", sequenceName = "SEQ_WINDOW_10", allocationSize = 1)
     private Long id;
     @Enumerated(EnumType.STRING)
     private WindowType windowType;
