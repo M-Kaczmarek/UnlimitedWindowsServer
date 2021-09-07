@@ -1,12 +1,12 @@
 package pl.unlimited.windows.serwer.model.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import pl.unlimited.windows.serwer.model.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 import java.util.Optional;
 
+@JsonDeserialize(builder = WindowDto.WindowDtoBuilder.class)
 public class WindowDto {
     private final Long id;
     private final WindowType windowType;
@@ -66,6 +66,7 @@ public class WindowDto {
         return Optional.ofNullable(windowSize).orElse(null);
     }
 
+    @JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
     public static class WindowDtoBuilder {
         private Long id;
         private WindowType windowType;

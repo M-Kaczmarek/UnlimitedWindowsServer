@@ -22,10 +22,8 @@ public class WindowSizeFacade {
         this.createWindowSize = createWindowSize;
     }
 
-    public List<WindowSizeDto> getWindowSizes(){
-        List<WindowSize> sizeRepositoryAll = windowSizeRepository.findAll();
-        List<WindowSizeDto> windowSizeDtos = sizeRepositoryAll.stream().map(entity -> entity.toDto()).collect(Collectors.toList());
-        return windowSizeDtos;
+    public List<WindowSizeDto> findAllWindowSizes(){
+        return windowSizeRepository.findAll().stream().map(entity -> entity.toDto()).collect(Collectors.toList());
     }
 
     public WindowSizeDto createWindowSize(final WindowSizeDto windowSizeDto){

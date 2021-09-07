@@ -1,9 +1,11 @@
 package pl.unlimited.windows.serwer.model.dto;
 
-import pl.unlimited.windows.serwer.model.Window;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.Optional;
 
+@JsonDeserialize(builder = OrderDocumentDto.OrderDocumentDtoBuilder.class)
 public class OrderDocumentDto {
     private final Long id;
     private final WindowDto window;
@@ -21,6 +23,7 @@ public class OrderDocumentDto {
         return id;
     }
 
+    @JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
     public static class OrderDocumentDtoBuilder {
         private WindowDto window;
         private Long id;

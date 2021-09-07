@@ -5,6 +5,7 @@ import pl.unlimited.windows.serwer.model.dto.WindowDto;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "windows")
 public class Window {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "window_seq")
@@ -114,6 +115,7 @@ public class Window {
 
     public WindowDto toDto (){
         return new WindowDto.WindowDtoBuilder()
+                .id(id)
                 .countWindowSashes(countWindowSashes)
                 .windowProfileType(windowProfileType)
                 .glassType(glassType)

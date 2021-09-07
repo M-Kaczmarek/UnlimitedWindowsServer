@@ -14,8 +14,8 @@ class CreateOrderDocumentService {
         this.orderDocumentRepository = orderDocumentRepository;
     }
 
-    public OrderDocumentDto createOrderDocument(final OrderDocumentDto orderDocumentDto){
-        OrderDocumentDomain orderDocumentDomain =  OrderDocumentDomain.fromDto(orderDocumentDto);
+    public OrderDocumentDto createOrderDocument(final OrderDocumentDto orderDocumentDto) {
+        OrderDocumentDomain orderDocumentDomain = OrderDocumentDomain.fromDto(orderDocumentDto);
         OrderDocument savedOrderDocument = orderDocumentRepository.save(OrderDocumentDomain.toEntityModel(orderDocumentDomain));
         return savedOrderDocument.toDto();
     }

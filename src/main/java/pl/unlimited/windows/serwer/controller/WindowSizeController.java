@@ -4,7 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import pl.unlimited.windows.serwer.api.WindowSizeApi;
 import pl.unlimited.windows.serwer.model.WindowSize;
+import pl.unlimited.windows.serwer.model.dto.WindowDto;
 import pl.unlimited.windows.serwer.model.dto.WindowSizeDto;
+import pl.unlimited.windows.serwer.service.WindowFacade;
 import pl.unlimited.windows.serwer.service.WindowSizeFacade;
 
 import java.net.URI;
@@ -14,20 +16,40 @@ import java.util.List;
 public class WindowSizeController implements WindowSizeApi {
 
     private WindowSizeFacade windowSizeFacade;
+    private WindowFacade windowFacade;
 
-    public WindowSizeController(WindowSizeFacade windowSizeFacade) {
+    public WindowSizeController(WindowSizeFacade windowSizeFacade, WindowFacade windowFacade) {
         this.windowSizeFacade = windowSizeFacade;
+        this.windowFacade = windowFacade;
+    }
+
+    @Override
+    public ResponseEntity<List<WindowDto>> getWindows() {
+        return ResponseEntity.ok(windowFacade.findAllWindows());
+    }
+
+    @Override
+    public ResponseEntity<WindowDto> createWindow(WindowDto windowDto) {
+        WindowDto createdWindow = windowFacade.createWindow(windowDto);
+
+        return ResponseEntity.created(URI.create("/api/windows/" + createdWindow.getId())).body(createdWindow);
+    }
+
+    @Override
+    public ResponseEntity<WindowDto> getWindowById(Long id) {
+        return ResponseEntity.ok(windowFacade.findWindowById(id));
     }
 
     @Override
     public ResponseEntity<List<WindowSizeDto>> getWindowSizes() {
-        return ResponseEntity.ok(windowSizeFacade.getWindowSizes());
+        return ResponseEntity.ok(windowSizeFacade.findAllWindowSizes());
     }
 
     @Override
     public ResponseEntity<WindowSizeDto> createWindowSize(WindowSizeDto windowSizeDto) {
         WindowSizeDto createdWindowSize = windowSizeFacade.createWindowSize(windowSizeDto);
-        return ResponseEntity.created(URI.create("/api/windows/sizes/" + createdWindowSize.getId())).body(createdWindowSize); //TODO status code could be created and return URI
+
+        return ResponseEntity.created(URI.create("/api/windows/sizes/" + createdWindowSize.getId())).body(createdWindowSize);
     }
 
     @Override

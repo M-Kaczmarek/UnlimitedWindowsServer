@@ -17,7 +17,7 @@ public class RestErrorAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = {OrderDocumentNotFoundException.class, WindowSizeNotFoundException.class})
+    @ExceptionHandler(value = {OrderDocumentNotFoundException.class, WindowSizeNotFoundException.class, WindowNotFoundException.class})
     public ResponseEntity<Error> handleNotFound(ServiceException e) {
         Error error = new Error(e.getMessage(), e.getErrorCode());
 
