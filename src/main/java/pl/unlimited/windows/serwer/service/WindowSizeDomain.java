@@ -51,4 +51,8 @@ class WindowSizeDomain {
             throw new OrderDocumentInvalidRequestException(String.format(EXCEPTION_DESCRIPTION_IS_POSITIVE_NUMBER, "Height"), ErrorCode.ORDER_DOCUMENT_INVALID_REQUEST);
         }
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

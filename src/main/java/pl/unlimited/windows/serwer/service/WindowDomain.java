@@ -24,7 +24,7 @@ class WindowDomain {
     private WindowOpenType windowOpenType;
     private WindowSizeDomain windowSize;
 
-    private WindowDomain (WindowDto windowDto){
+    private WindowDomain(WindowDto windowDto) {
         isRequiredData(windowDto.getWindowType(), windowDto.getGlassType(), windowDto.getWindowProfileType(), windowDto.getWindowHardware(),
                 windowDto.getCountWindowSashes(), windowDto.getWindowOpenType(), windowDto.getWindowSize());
         countWindowSashesIsPositive(windowDto.getCountWindowSashes());
@@ -39,11 +39,11 @@ class WindowDomain {
         this.windowSize = WindowSizeDomain.fromDto(windowDto.getWindowSize());
     }
 
-    public static WindowDomain fromDto(final WindowDto windowDto){
+    public static WindowDomain fromDto(final WindowDto windowDto) {
         return new WindowDomain(windowDto);
     }
 
-    public static Window toEntityWindow(final WindowDomain windowDomain){
+    public static Window toEntityWindow(final WindowDomain windowDomain) {
         return new Window(windowDomain.id, windowDomain.windowType, windowDomain.glassType, windowDomain.protectionGlass, windowDomain.windowProfileType, windowDomain.windowHardware, windowDomain.countWindowSashes, windowDomain.windowOpenType, WindowSizeDomain.toEntityWindowSize(windowDomain.windowSize));
     }
 
@@ -58,15 +58,18 @@ class WindowDomain {
     }
 
     private void countWindowSashesIsPositive(Long countWindowSashes) {
-        if(countWindowSashes <=0){
+        if (countWindowSashes <= 0) {
             throw new OrderDocumentInvalidRequestException(String.format(EXCEPTION_DESCRIPTION_IS_POSITIVE_NUMBER, "Count window sashes"), ErrorCode.ORDER_DOCUMENT_INVALID_REQUEST);
         }
     }
 
     private void isRequiredValue(Object filed, String fieldName) {
-        if(filed == null){
+        if (filed == null) {
             throw new OrderDocumentInvalidRequestException(String.format(EXCEPTION_DESCRIPTION_IS_NULL, fieldName), ErrorCode.ORDER_DOCUMENT_INVALID_REQUEST);
         }
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

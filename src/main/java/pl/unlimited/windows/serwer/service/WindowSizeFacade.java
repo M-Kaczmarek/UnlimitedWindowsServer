@@ -16,18 +16,24 @@ public class WindowSizeFacade {
 
     private WindowSizeRepository windowSizeRepository;
     private CreateWindowSize createWindowSize;
+    private UpdateWindowSizeService updateWindowSizeService;
 
-    public WindowSizeFacade(WindowSizeRepository windowSizeRepository, CreateWindowSize createWindowSize) {
+    public WindowSizeFacade(WindowSizeRepository windowSizeRepository, CreateWindowSize createWindowSize, UpdateWindowSizeService updateWindowSizeService) {
         this.windowSizeRepository = windowSizeRepository;
         this.createWindowSize = createWindowSize;
+        this.updateWindowSizeService = updateWindowSizeService;
     }
 
-    public List<WindowSizeDto> findAllWindowSizes(){
+    public List<WindowSizeDto> findAllWindowSizes() {
         return windowSizeRepository.findAll().stream().map(entity -> entity.toDto()).collect(Collectors.toList());
     }
 
-    public WindowSizeDto createWindowSize(final WindowSizeDto windowSizeDto){
+    public WindowSizeDto createWindowSize(final WindowSizeDto windowSizeDto) {
         return createWindowSize.createWindowDto(WindowSizeDomain.fromDto(windowSizeDto));
+    }
+
+    public void updateWindowSize(final Long id, final WindowSizeDto windowSizeDto) {
+        updateWindowSizeService.updateWindowSize(id, WindowSizeDomain.fromDto(windowSizeDto));
     }
 
     public WindowSizeDto getWindowSizeById(Long id) {

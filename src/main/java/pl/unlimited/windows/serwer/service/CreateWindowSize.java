@@ -14,7 +14,7 @@ class CreateWindowSize {
         this.windowSizeRepository = windowSizeRepository;
     }
 
-    public WindowSizeDto createWindowDto(WindowSizeDomain windowSizeDomain){
+    public WindowSizeDto createWindowDto(WindowSizeDomain windowSizeDomain) {
         WindowSize windowSizeEntity = WindowSizeDomain.toEntityWindowSize(windowSizeDomain);
         WindowSize createdWindowSize = windowSizeRepository.save(windowSizeEntity);
 

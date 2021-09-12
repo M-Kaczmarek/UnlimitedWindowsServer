@@ -15,10 +15,12 @@ public class WindowFacade {
 
     private WindowRepository windowRepository;
     private CreateWindowService createWindowService;
+    private UpdateWindowService updateWindowService;
 
-    public WindowFacade(WindowRepository windowRepository, CreateWindowService createWindowService) {
+    public WindowFacade(WindowRepository windowRepository, CreateWindowService createWindowService, UpdateWindowService updateWindowService) {
         this.windowRepository = windowRepository;
         this.createWindowService = createWindowService;
+        this.updateWindowService = updateWindowService;
     }
 
     public List<WindowDto> findAllWindows() {
@@ -32,5 +34,9 @@ public class WindowFacade {
 
     public WindowDto createWindow(final WindowDto windowDto) {
         return createWindowService.createWindow(WindowDomain.fromDto(windowDto));
+    }
+
+    public void updateWindows(Long id, WindowDto windowDto) {
+        updateWindowService.updateWindow(id, WindowDomain.fromDto(windowDto));
     }
 }

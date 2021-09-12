@@ -18,14 +18,18 @@ public class OrderDocumentFacade {
         this.orderDocumentRepository = orderDocumentRepository;
     }
 
-    public OrderDocumentDto createOrderDocument(OrderDocumentDto orderDocument){
+    public OrderDocumentDto createOrderDocument(OrderDocumentDto orderDocument) {
         return createOrderDocumentService.createOrderDocument(orderDocument);
     }
 
     public List<OrderDocumentDto> getOrderDocument() {
-        return  orderDocumentRepository.findAll()
-                    .stream()
-                    .map(entity -> entity.toDto())
-                    .collect(Collectors.toList());
+        return orderDocumentRepository.findAll()
+                .stream()
+                .map(entity -> entity.toDto())
+                .collect(Collectors.toList());
+    }
+
+    public void updateOrderDocument(Long id, OrderDocumentDto orderDocumentDto) {
+
     }
 }

@@ -19,11 +19,17 @@ public interface WindowSizeApi {
     @GetMapping("/{id}")
     ResponseEntity<WindowDto> getWindowById(@PathVariable Long id);
 
+    @PutMapping("/{id}")
+    ResponseEntity<Void> updateWindow(@PathVariable Long id, @RequestBody WindowDto windowDto);
+
     @GetMapping("/sizes")
     ResponseEntity<List<WindowSizeDto>> getWindowSizes();
 
     @PostMapping("/sizes")
     ResponseEntity<WindowSizeDto> createWindowSize(@RequestBody WindowSizeDto windowSizeDto);
+
+    @PutMapping("/sizes/{id}")
+    ResponseEntity<Void> updateWindowSize(@PathVariable Long id, @RequestBody WindowSizeDto windowSizeDto);
 
     @GetMapping("/sizes/{id}")
     ResponseEntity<WindowSizeDto> getWindowSizeById(@PathVariable Long id);

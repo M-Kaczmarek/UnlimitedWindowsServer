@@ -41,6 +41,12 @@ public class WindowSizeController implements WindowSizeApi {
     }
 
     @Override
+    public ResponseEntity<Void> updateWindow(Long id, WindowDto windowDto) {
+        windowFacade.updateWindows(id, windowDto);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
     public ResponseEntity<List<WindowSizeDto>> getWindowSizes() {
         return ResponseEntity.ok(windowSizeFacade.findAllWindowSizes());
     }
@@ -50,6 +56,13 @@ public class WindowSizeController implements WindowSizeApi {
         WindowSizeDto createdWindowSize = windowSizeFacade.createWindowSize(windowSizeDto);
 
         return ResponseEntity.created(URI.create("/api/windows/sizes/" + createdWindowSize.getId())).body(createdWindowSize);
+    }
+
+    @Override
+    public ResponseEntity<Void> updateWindowSize(Long id, WindowSizeDto windowSize) {
+        windowSizeFacade.updateWindowSize(id, windowSize);
+
+        return ResponseEntity.noContent().build();
     }
 
     @Override
