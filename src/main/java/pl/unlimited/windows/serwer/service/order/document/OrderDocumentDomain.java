@@ -7,10 +7,12 @@ import pl.unlimited.windows.serwer.model.dto.OrderDocumentDto;
 import pl.unlimited.windows.serwer.model.dto.WindowDto;
 
 class OrderDocumentDomain {
+    private String name;
     private WindowDomain window;
 
     private OrderDocumentDomain(OrderDocumentDto orderDocumentDto) {
         isWindow(orderDocumentDto.getWindow());
+        this.name = orderDocumentDto.getName();
         this.window = WindowDomain.fromDto(orderDocumentDto.getWindow());;
     }
 
@@ -19,11 +21,15 @@ class OrderDocumentDomain {
     }
 
     public static OrderDocument toEntityModel(OrderDocumentDomain orderDocumentDomain){
-        return new OrderDocument(null, WindowDomain.toEntityWindow(orderDocumentDomain.getWindow()));
+        return new OrderDocument(null, orderDocumentDomain.getName(), WindowDomain.toEntityWindow(orderDocumentDomain.getWindow()));
     }
 
     public WindowDomain getWindow() {
         return window;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void isWindow(WindowDto window){

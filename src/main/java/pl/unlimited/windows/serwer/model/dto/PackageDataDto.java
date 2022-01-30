@@ -1,10 +1,11 @@
 package pl.unlimited.windows.serwer.model.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
 @Builder
-@Getter
 public class PackageDataDto {
     private String documentNumber;
     private SenderDto senderDto;

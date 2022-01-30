@@ -132,13 +132,12 @@ public class ProductionDocumentService {
 var nextProductionStep = productionDocument.getNextProductionSteps();
            productionDocument.setPreviousProductionSteps(productionDocument.getProductionSteps());
            productionDocument.setProductionSteps(productionDocument.getNextProductionSteps());
-           productionDocument.setNextProductionSteps(productionDocument.getNextProductionSteps() == null || productionDocument.getNextProductionSteps() == ProductionSteps.STORAGE? ProductionSteps.STORAGE :ProductionSteps.valueOf(getNextProductionStep(productionDocument.getNextProductionSteps())));
+           productionDocument.setNextProductionSteps(productionDocument.getNextProductionSteps() == null || productionDocument.getNextProductionSteps() == ProductionSteps.PACKING  ? ProductionSteps.PACKING :ProductionSteps.valueOf(getNextProductionStep(productionDocument.getNextProductionSteps())));
            productionDocumentRepository.save(productionDocument);
            if(ProductionSteps.PACKING.equals(nextProductionStep)){
                packingDocumentRepository.save(new PackingDocument(productionDocument));
            }
            productionDocumentRepository.flush();
-
 
        return productionDocumentRepository.findAll().stream().map(ProductionDocument::toDto).sorted(Comparator.comparing(ProductionDocumentDto::getId)).collect(Collectors.toList());
     }
@@ -163,8 +162,6 @@ var nextProductionStep = productionDocument.getNextProductionSteps();
                 return "QUALITY_CONTROL";
             case QUALITY_CONTROL:
                 return "PACKING";
-            case PACKING:
-                return "STORAGE";
             default:
                 throw new IllegalArgumentException();
         }

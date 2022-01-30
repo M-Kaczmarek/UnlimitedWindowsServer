@@ -8,15 +8,21 @@ import java.util.Optional;
 @JsonDeserialize(builder = OrderDocumentDto.OrderDocumentDtoBuilder.class)
 public class OrderDocumentDto {
     private final Long id;
+    private final String name;
     private final WindowDto window;
 
     public OrderDocumentDto(final OrderDocumentDtoBuilder builder) {
         this.window = builder.window;
+        this.name = builder.name;
         this.id = builder.id;
     }
 
     public WindowDto getWindow() {
         return Optional.ofNullable(window).orElse(null);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Long getId() {
@@ -26,6 +32,7 @@ public class OrderDocumentDto {
     @JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
     public static class OrderDocumentDtoBuilder {
         private WindowDto window;
+        private String name;
         private Long id;
 
 
@@ -36,6 +43,11 @@ public class OrderDocumentDto {
 
         public OrderDocumentDtoBuilder id(final Long id) {
             this.id = id;
+            return this;
+        }
+
+        public OrderDocumentDtoBuilder name(final String name) {
+            this.name = name;
             return this;
         }
 

@@ -1,10 +1,12 @@
 package pl.unlimited.windows.serwer.model.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.*;
 
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
 @Builder
-@Getter
 public class SenderDto {
 
     private String name;

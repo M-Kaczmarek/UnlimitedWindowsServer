@@ -11,14 +11,16 @@ public class OrderDocument {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
     @SequenceGenerator(name = "order_seq", sequenceName = "SEQ_ORDER_20", allocationSize = 1)
     private Long id;
+    private String name;
     @OneToOne(cascade = CascadeType.REMOVE)
     private Window window;
 
     public OrderDocument() {
     }
 
-    public OrderDocument(Long id, Window window) {
+    public OrderDocument(Long id, String name, Window window) {
         this.id = id;
+        this.name = name;
         this.window = window;
     }
 
@@ -28,6 +30,14 @@ public class OrderDocument {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Window getWindow() {
@@ -41,6 +51,7 @@ public class OrderDocument {
     public OrderDocumentDto toDto(){
         return new OrderDocumentDto.OrderDocumentDtoBuilder()
                 .id(id)
+                .name(name)
                 .window(window.toDto())
                 .build();
     }
