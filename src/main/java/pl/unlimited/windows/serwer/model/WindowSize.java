@@ -10,7 +10,6 @@ public class WindowSize {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "window_size_seq")
     @SequenceGenerator(name = "window_size_seq", sequenceName = "SEQ_WINDOW_SIZE_15", allocationSize = 1)
-
     private Long id;
     private Double width;
     private Double height;

@@ -11,7 +11,7 @@ public class OrderDocument {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
     @SequenceGenerator(name = "order_seq", sequenceName = "SEQ_ORDER_20", allocationSize = 1)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Window window;
 
     public OrderDocument() {
@@ -44,4 +44,5 @@ public class OrderDocument {
                 .window(window.toDto())
                 .build();
     }
+
 }
