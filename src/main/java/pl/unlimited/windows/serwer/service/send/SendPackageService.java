@@ -1,25 +1,17 @@
 package pl.unlimited.windows.serwer.service.send;
 
 import lombok.SneakyThrows;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 import pl.unlimited.windows.serwer.couriers.api.CourierResponse;
 import pl.unlimited.windows.serwer.couriers.api.dpd.*;
-import pl.unlimited.windows.serwer.couriers.api.dpd.Package;
 import pl.unlimited.windows.serwer.error.exception.ErrorCode;
-import pl.unlimited.windows.serwer.error.exception.OrderDocumentNotFoundException;
 import pl.unlimited.windows.serwer.error.exception.TransportDocumentNotFoundException;
 import pl.unlimited.windows.serwer.model.dto.PackageDataDto;
 import pl.unlimited.windows.serwer.repository.TransportDocumentRepository;
 import pl.unlimited.windows.serwer.service.send.courier.integration.AbstractCourierStrategy;
 import pl.unlimited.windows.serwer.service.send.courier.integration.DPDCourierStrategy;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
+import java.util.Map;
 
 @Service
 public class SendPackageService {
@@ -30,12 +22,11 @@ public class SendPackageService {
         this.transportDocumentRepository = transportDocumentRepository;
     }
 
-    public CourierResponse generatePackage(PackageDataDto packageDataDto, final Long transportId, final Long courierId){
+    public Map<String, String> generatePackage(PackageDataDto packageDataDto, final Long transportId, final Long courierId){
         var transportDocument = transportDocumentRepository.findById(transportId).orElseThrow(() -> new TransportDocumentNotFoundException("Transport document is with id: " + transportId + " not found", ErrorCode.TRANSPORT_DOCUMENT_NOT_FOUND));
 
         CourierResponse result = null;
-//        AbstractCourierStrategy courierStrategy = null;
-        //TODO Add new exception
+
         if(courierId == null){
             throw new IllegalArgumentException();
         }
@@ -49,7 +40,7 @@ public class SendPackageService {
           return null;
         }
 
-        return result;
+        return Map.of("ID" ,((DPDCourierResponse) result).getReturnResponse().getPackageResponse().getPackageResponseList().get(0).getParcelsResponseList().get(0).getParcelResponse().getWaybill());
     }
 
     @SneakyThrows

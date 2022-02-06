@@ -129,7 +129,10 @@ public class ProductionDocumentService {
     }
     public List<ProductionDocumentDto> doNextStep(ProductionSteps newProductionStep, Long id) {
        var productionDocument = productionDocumentRepository.findById(id).orElseThrow(() -> new ProductionDocumentNotFoundException("Production document is with id: " + id + " not found", ErrorCode.PRODUCTION_DOCUMENT_NOT_FOUND));
-var nextProductionStep = productionDocument.getNextProductionSteps();
+       if(ProductionSteps.PACKING.equals(productionDocument.getProductionSteps())){
+        return productionDocumentRepository.findAll().stream().map(ProductionDocument::toDto).sorted(Comparator.comparing(ProductionDocumentDto::getId)).collect(Collectors.toList());
+       }
+       var nextProductionStep = productionDocument.getNextProductionSteps();
            productionDocument.setPreviousProductionSteps(productionDocument.getProductionSteps());
            productionDocument.setProductionSteps(productionDocument.getNextProductionSteps());
            productionDocument.setNextProductionSteps(productionDocument.getNextProductionSteps() == null || productionDocument.getNextProductionSteps() == ProductionSteps.PACKING  ? ProductionSteps.PACKING :ProductionSteps.valueOf(getNextProductionStep(productionDocument.getNextProductionSteps())));

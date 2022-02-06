@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.unlimited.windows.serwer.couriers.api.CourierResponse;
 import pl.unlimited.windows.serwer.model.dto.PackageDataDto;
 
+import java.util.Map;
+
 @RequestMapping("/api/courier/generate")
 @Tag(name = "Integracja z kurierem", description = "Endpointy komunikujące się z serwerem kuriera")
 public interface CallCourierApi {
@@ -23,13 +25,13 @@ public interface CallCourierApi {
                     @ApiResponse(
                             description = "Udana operacjia",
                             responseCode = "200",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CourierResponse.class))
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))
                     ),
                     @ApiResponse(description = "Not found", responseCode = "404", content = @Content),
                     @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
             }
     )
-    ResponseEntity<CourierResponse> generatePackageNumber(@PathVariable Long courierId,@PathVariable Long transportId, @RequestBody PackageDataDto packageData );
+    ResponseEntity<Map<String, String>> generatePackageNumber(@PathVariable Long courierId, @PathVariable Long transportId, @RequestBody PackageDataDto packageData );
 
     @PostMapping("/label/{courierId}/{transportId}")
     @Operation(

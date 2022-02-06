@@ -37,7 +37,9 @@ public class PackingDocumentService {
 
     public PackingDocumentDto packedProduct (final Long id){
        var packingDocument = packingDocumentRepository.findById(id).orElseThrow(() -> new ProductionDocumentNotFoundException("Packing document is with id: " + id + " not found", ErrorCode.PACKING_DOCUMENT_NOT_FOUND));
-
+       if(!packingDocument.isPacked()){
+           return packingDocument.toDto();
+       }
        packingDocument.setPacked(Boolean.TRUE);
      var savedPackingDocument = packingDocumentRepository.save(packingDocument);
 

@@ -19,6 +19,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
+import java.util.Map;
 
 @RestController
 @SecurityRequirement(name = "tokenJWT")
@@ -31,7 +32,7 @@ public class CallCourierController implements CallCourierApi {
     }
 
     @Override
-    public ResponseEntity<CourierResponse> generatePackageNumber(Long courierId, Long transportId, PackageDataDto packageData) {
+    public ResponseEntity<Map<String, String>> generatePackageNumber(Long courierId, Long transportId, PackageDataDto packageData) {
         return ResponseEntity.ok(service.generatePackage(packageData, transportId, courierId));
     }
 

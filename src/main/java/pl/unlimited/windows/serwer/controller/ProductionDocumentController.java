@@ -30,16 +30,6 @@ public class ProductionDocumentController implements ProductionDocumentApi {
     public ResponseEntity<ProductionDocumentDto> getProductionDocumentById(Long id) {
         return ResponseEntity.ok(productionDocumentService.getProductionDocumentById(id));
     }
-//
-//    @Override
-//    public ResponseEntity<List<ProductionDocumentDto>> getProductionDocumentByDate(String date) {
-//        return ResponseEntity.ok(productionDocumentService.getProductionDocumentsByDate(date));
-//    }
-//
-//    @Override
-//    public ResponseEntity<List<ProductionDocumentDto>> getProductionDocumentByStep(String step) {
-//        return ResponseEntity.ok(productionDocumentService.getProductionDocumentsBySteps(step));
-//    }
 
     @Override
     public ResponseEntity<List<ProductionDocumentDto>> getProductionDocumentByDateAndStep(String date, String dateFrom,String dateTo,ProductionSteps step) {
