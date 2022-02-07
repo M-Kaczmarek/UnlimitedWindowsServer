@@ -76,6 +76,27 @@ mvn spring-boot:run
 ```
 
 Aplikacja powinna zostać uruchomiena na porcie 8080
+
+Po pierwszym uruchomieniu aplikacji należy stworzyć użytkownika, można to zrobić wykorzystując program postman.
+Należy wysłaś żadanie POST HTTP pod adres localhost:8080/api/authentication/register z poniższym body
+
+```sh
+{
+    "login": "Admin",
+    "password": "admin123"
+}
+```
+
+Drugą możliwością stworzenia użytkownika do uruchomienie poniższego skryptu curl:
+
+```shell
+curl --location --request POST 'localhost:8080/api/authentication/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "login": "Admin",
+    "password": "admin123"
+}'
+```
 ## Autor
 
 Mariusz Kaczmarek

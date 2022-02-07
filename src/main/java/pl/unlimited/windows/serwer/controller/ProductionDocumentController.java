@@ -1,11 +1,9 @@
 package pl.unlimited.windows.serwer.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import pl.unlimited.windows.serwer.api.ProductionDocumentApi;
-import pl.unlimited.windows.serwer.couriers.api.dpd.AuthData;
 import pl.unlimited.windows.serwer.model.ProductionSteps;
 import pl.unlimited.windows.serwer.model.dto.ProductionDocumentDto;
 import pl.unlimited.windows.serwer.service.production.document.ProductionDocumentService;

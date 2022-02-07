@@ -1,9 +1,7 @@
 package pl.unlimited.windows.serwer.service.production.document;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import pl.unlimited.windows.serwer.error.exception.ErrorCode;
-import pl.unlimited.windows.serwer.error.exception.OrderDocumentNotFoundException;
 import pl.unlimited.windows.serwer.error.exception.ProductionDocumentNotFoundException;
 import pl.unlimited.windows.serwer.model.OrderDocument;
 import pl.unlimited.windows.serwer.model.PackingDocument;
@@ -21,7 +19,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static pl.unlimited.windows.serwer.model.ProductionSteps.PROFILE_CUTTING;
-import static pl.unlimited.windows.serwer.model.ProductionSteps.STEEL_CUTTING;
 
 @Service
 public class ProductionDocumentService {

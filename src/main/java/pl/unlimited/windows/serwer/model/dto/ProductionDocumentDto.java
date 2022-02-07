@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import pl.unlimited.windows.serwer.model.ProductionSteps;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 @JsonDeserialize(builder = ProductionDocumentDto.ProductionDocumentDtoBuilder.class)

@@ -5,7 +5,6 @@ import pl.unlimited.windows.serwer.error.exception.OrderDocumentInvalidRequestEx
 import pl.unlimited.windows.serwer.model.*;
 import pl.unlimited.windows.serwer.model.dto.WindowDto;
 import pl.unlimited.windows.serwer.model.dto.WindowSizeDto;
-import pl.unlimited.windows.serwer.service.order.document.WindowDomain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.ArgumentMatchers.anyLong;

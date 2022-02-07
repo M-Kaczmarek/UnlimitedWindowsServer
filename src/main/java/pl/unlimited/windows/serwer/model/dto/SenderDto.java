@@ -1,6 +1,5 @@
 package pl.unlimited.windows.serwer.model.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 @AllArgsConstructor

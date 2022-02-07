@@ -92,7 +92,7 @@ public class DPDCourierStrategy implements AbstractCourierStrategy{
         result = result.replaceAll("<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:generateSpedLabelsV4Response xmlns:ns2=\"http://dpdservices.dpd.com.pl/\"><return><documentData>", "");
         result = result.substring(0, result.indexOf("</documentData>"));
         System.out.println(result);
-//
+
         return Base64.getDecoder().decode(result);
 
     }
@@ -119,23 +119,16 @@ public class DPDCourierStrategy implements AbstractCourierStrategy{
         String result = "";
 
         try {
-            //Create JAXB Context
             JAXBContext jaxbContext = JAXBContext.newInstance(GeneratePackageNumberDPD.class);
 
-            //Create Marshaller
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-            //Required formatting??
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            //Print XML String to Console
             StringWriter sw = new StringWriter();
 
-            //Write XML to StringWriter
-            Object employee;
             jaxbMarshaller.marshal(req, sw);
 
-            //Verify XML Content
             result = sw.toString();
 
             result.replace("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>", "");

@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.unlimited.windows.serwer.couriers.api.CourierResponse;
 import pl.unlimited.windows.serwer.model.dto.PackageDataDto;
 
 import java.util.Map;

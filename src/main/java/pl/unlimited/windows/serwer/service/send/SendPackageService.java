@@ -47,7 +47,6 @@ public class SendPackageService {
     public byte[] generateLabel(Long courierId, Long transportId) {
         AbstractCourierStrategy courierStrategy = null;
         byte [] result = null;
-        //TODO Add new exception
         if(courierId == null){
             throw new IllegalArgumentException();
         }

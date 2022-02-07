@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.unlimited.windows.serwer.model.AuthenticationRequest;
 import pl.unlimited.windows.serwer.model.AuthenticationResponse;
 import pl.unlimited.windows.serwer.model.SystemUser;
-import pl.unlimited.windows.serwer.model.dto.TransportDocumentDto;
 import pl.unlimited.windows.serwer.security.service.MyUserDetailsService;
 import pl.unlimited.windows.serwer.security.util.JwtUtil;
 

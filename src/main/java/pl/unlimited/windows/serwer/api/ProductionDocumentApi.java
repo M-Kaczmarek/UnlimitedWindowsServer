@@ -15,7 +15,6 @@ import pl.unlimited.windows.serwer.model.ProductionSteps;
 import pl.unlimited.windows.serwer.model.dto.PackingDocumentDto;
 import pl.unlimited.windows.serwer.model.dto.ProductionDocumentDto;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RequestMapping("/api/productions/documents")

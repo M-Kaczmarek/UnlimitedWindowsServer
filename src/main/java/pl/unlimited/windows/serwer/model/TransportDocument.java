@@ -1,6 +1,5 @@
 package pl.unlimited.windows.serwer.model;
 
-import pl.unlimited.windows.serwer.model.dto.PackingDocumentDto;
 import pl.unlimited.windows.serwer.model.dto.TransportDocumentDto;
 
 import javax.persistence.*;

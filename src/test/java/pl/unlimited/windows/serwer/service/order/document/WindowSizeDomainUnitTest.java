@@ -3,7 +3,6 @@ package pl.unlimited.windows.serwer.service.order.document;
 import org.junit.jupiter.api.Test;
 import pl.unlimited.windows.serwer.error.exception.OrderDocumentInvalidRequestException;
 import pl.unlimited.windows.serwer.model.dto.WindowSizeDto;
-import pl.unlimited.windows.serwer.service.order.document.WindowSizeDomain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.ArgumentMatchers.anyLong;

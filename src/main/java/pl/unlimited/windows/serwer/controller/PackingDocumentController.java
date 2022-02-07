@@ -1,12 +1,10 @@
 package pl.unlimited.windows.serwer.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import pl.unlimited.windows.serwer.api.PackingDocumentApi;
 import pl.unlimited.windows.serwer.model.dto.PackingDocumentDto;
-import pl.unlimited.windows.serwer.model.dto.ProductionDocumentDto;
 import pl.unlimited.windows.serwer.service.packing.document.PackingDocumentService;
 
 import java.util.List;

@@ -1,15 +1,15 @@
 package pl.unlimited.windows.serwer.model;
 
 public enum ProductionSteps {
-    PROFILE_CUTTING,//Ciecie profilu
-    STEEL_CUTTING,//Ciecie stali
-    FRAME_WELDING,//zgrzewanie ramy
-    SASH_WELDING,//zgrzewanie skrzydel
-    FRAME_FITTING,//okuwanie ram
-    SASH_FITTING,//okuwanie skrzydel
-    GLAZING, //szklenie
-    ASSEMBLY,//mozntaz
-    QUALITY_CONTROL,//kontrola jakosci
-    PACKING,//packowanie
-    STORAGE //magazynowanie
+    PROFILE_CUTTING,
+    STEEL_CUTTING,
+    FRAME_WELDING,
+    SASH_WELDING,
+    FRAME_FITTING,
+    SASH_FITTING,
+    GLAZING,
+    ASSEMBLY,
+    QUALITY_CONTROL,
+    PACKING,
+    STORAGE
 }
